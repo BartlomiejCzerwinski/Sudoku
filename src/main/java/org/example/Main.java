@@ -4,16 +4,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world!");
         SudokuBoard sudokuBoard = new SudokuBoard();
-        sudokuBoard.shuffleNumbers();
-        sudokuBoard.shuffleNumbers();
-        sudokuBoard.shuffleNumbers();
-        sudokuBoard.shuffleNumbers();
-        sudokuBoard.shuffleNumbers();
-        sudokuBoard.shuffleNumbers();
-        sudokuBoard.shuffleNumbers();
-        sudokuBoard.shuffleNumbers();
-        sudokuBoard.shuffleNumbers();
-        sudokuBoard.shuffleNumbers();
-        sudokuBoard.shuffleNumbers();
+        sudokuBoard.fillBoard();
+        sudokuBoard.printBoard();
     }
 }

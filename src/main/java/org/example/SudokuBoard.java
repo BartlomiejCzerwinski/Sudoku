@@ -9,13 +9,10 @@ public class SudokuBoard {
     {
         for(int i = 0; i < BOARD_SIZE; i++)
         {
-            List arrayToFillBoard = shuffleNumbers();
+            List<Integer> arrayToFillBoard = shuffleNumbers();
             for(int j = 0; j < BOARD_SIZE; j++)
             {
-                int valueToInsert = (int) arrayToFillBoard.get(i);
-                if(checkIfColumIsRight(i, j, valueToInsert) && checkIfRowIsRight(i, j, valueToInsert)) {
-                    board[i][j] = (int) arrayToFillBoard.get(i);
-                }
+                board[i][j] = arrayToFillBoard.get(j);
             }
         }
     }
@@ -67,7 +64,7 @@ public class SudokuBoard {
             if (board[rowIndex][columnIndex - 1] == numberToInsert)
                 return false;
         }
-        
+
         return true;
     }
 
@@ -82,8 +79,23 @@ public class SudokuBoard {
             arrayToFillBoard.add(tempList.get(indexToTake));
             tempList.remove(indexToTake);
         }
-        System.out.println(arrayToFillBoard);
         return arrayToFillBoard;
+    }
+
+    public void printBoard()
+    {
+        for(int i = 0; i < BOARD_SIZE; i++)
+        {
+            String tmp ="";
+            for(int j = 0; j < BOARD_SIZE; j++)
+            {
+                int x = board[i][j];
+                tmp += x;
+                tmp += "  ";
+            }
+            System.out.println(tmp);
+            System.out.println();
+        }
     }
 
 
