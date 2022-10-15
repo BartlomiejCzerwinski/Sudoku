@@ -8,7 +8,6 @@ import java.util.Random;
 import static java.lang.System.exit;
 
 public class SudokuBoard {
-
     private static int BOARD_SIZE = 9;
     private static List<Integer> NUMBERS_TO_MIX = new LinkedList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
     private int board[][] = new int [9][9];
@@ -43,7 +42,6 @@ public class SudokuBoard {
 
                     }
                     return false;
-
                 }
             }
         }
@@ -106,6 +104,23 @@ public class SudokuBoard {
         return true;
     }
 
+    public boolean isBoardValid()
+    {
+        for(int row = 0; row < BOARD_SIZE; row++){
+            for(int column = 0; column < BOARD_SIZE; column++){
+
+                int tmp = board[row][column];
+                board[row][column] = 0;
+
+                if(!isNumberValid(row, column, tmp)){
+                    return false;
+                }
+                board[row][column] = tmp;
+            }
+        }
+        return true;
+    }
+
     public List shuffleNumbers()
     {
         List tmpList = new LinkedList(NUMBERS_TO_MIX);
@@ -133,4 +148,18 @@ public class SudokuBoard {
             System.out.println();
         }
     }
+
+    public String getBoardByText()
+    {
+        String output = "";
+        for(int row = 0; row < BOARD_SIZE; row++)
+        {
+            for(int column = 0; column < BOARD_SIZE; column++)
+            {
+                output += board[row][column];
+            }
+        }
+        return output;
+    }
+
 }
