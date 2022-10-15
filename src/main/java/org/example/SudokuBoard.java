@@ -44,7 +44,9 @@ public class SudokuBoard {
     {
         if(checkIfColumIsRight(rowIndex, columnIndex, numberToInsert)){
             if(checkIfRowIsRight(rowIndex, columnIndex, numberToInsert)){
-                return true;
+                if(checkIfBoxIsRight(rowIndex, columnIndex, numberToInsert)){
+                    return true;
+                }
             }
         }
         return false;
@@ -72,32 +74,21 @@ public class SudokuBoard {
         return true;
     }
 
-    public boolean checkIfSquareIsRight(int rowIndex, int columnIndex, int numberToInsert)
+    public boolean checkIfBoxIsRight(int rowIndex, int columnIndex, int numberToInsert)
     {
-        if(rowIndex-1 >= 0) {
-            if(columnIndex-1 >= 0) {
-                if (board[rowIndex - 1][columnIndex - 1] == numberToInsert)
-                    return false;
-            }
-        }
-
-        if(rowIndex-1 >= 0) {
-            if (board[rowIndex - 1][columnIndex] == numberToInsert)
-                return false;
-        }
-
-        if(rowIndex+1 < BOARD_SIZE) {
-            if(columnIndex+1 < BOARD_SIZE) {
-                if (board[rowIndex + 1][columnIndex + 1] == numberToInsert)
-                    return false;
-            }
-        }
-
-        if(columnIndex-1 >= 0) {
-            if (board[rowIndex][columnIndex - 1] == numberToInsert)
-                return false;
-        }
-
+       int localBoxRowIndex = (rowIndex - (rowIndex % 3));
+       int localBoxColumnIndex = (columnIndex - (columnIndex % 3));
+        System.out.println(localBoxRowIndex);
+        System.out.println(localBoxColumnIndex);
+       for(int i = localBoxRowIndex; i < localBoxRowIndex + 3; i++){
+           for(int j = localBoxColumnIndex; j < localBoxColumnIndex + 3; j++){
+               System.out.println(board[i][j]);
+               if(board[i][j] == numberToInsert){
+                   System.out.println("number to insert:" + numberToInsert);
+                   return false;
+               }
+           }
+       }
         return true;
     }
 
