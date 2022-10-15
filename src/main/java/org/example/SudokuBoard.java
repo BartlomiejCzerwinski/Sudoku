@@ -10,33 +10,44 @@ import static java.lang.System.exit;
 public class SudokuBoard {
     public void fillBoard()
     {
+        fillFirstRow();
+        if(fillTheRestOfTheBoard()){
+            System.out.println("SUCCESS!!!");
+        }
+    }
+
+    public boolean fillTheRestOfTheBoard()
+    {
+        for(int i = 1; i < BOARD_SIZE; i++)
+        {
+            for(int j = 0; j < BOARD_SIZE; j++)
+            {
+                if(board[i][j] == 0) {
+                    for (int numberToInsert = 1; numberToInsert <= BOARD_SIZE; numberToInsert++) {
+                        if (checkIfNumberCanBeInsert(i, j, numberToInsert)) {
+                            board[i][j] = numberToInsert;
+
+                            if (fillTheRestOfTheBoard()) {
+                                return true;
+                            }
+                            else{
+                                board[i][j] = 0;
+                            }
+                        }
+                    }
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public void fillFirstRow()
+    {
         List<Integer> arrayToFillFirstRow = shuffleNumbers();
         for(int i = 0; i < BOARD_SIZE; i++)
         {
             board[0][i] = arrayToFillFirstRow.get(i);
-        }
-
-        for(int i = 1; i < BOARD_SIZE; i++)
-        {
-            List<Integer> arrayToFillBoard = shuffleNumbers();
-            int tmp = 0;
-
-            for(int j = 0; j < BOARD_SIZE; j++)
-            {
-                int numberToInsert = arrayToFillBoard.get(tmp);
-
-                if(checkIfNumberCanBeInsert(i, j, numberToInsert)){
-
-                    board[i][j] = numberToInsert;
-                    tmp++;
-
-                }
-                else {
-                    printBoard();
-                    exit(0);
-                }
-
-            }
         }
     }
 
@@ -54,7 +65,7 @@ public class SudokuBoard {
 
     public boolean checkIfColumIsRight(int rowIndex, int columnIndex, int numberToInsert)
     {
-        for(int i = 0; i < rowIndex; i++)
+        for(int i = 0; i < BOARD_SIZE; i++)
         {
             if(board[i][columnIndex] == numberToInsert){
                 return false;
@@ -65,7 +76,7 @@ public class SudokuBoard {
 
     public boolean checkIfRowIsRight(int rowIndex, int columnIndex, int numberToInsert)
     {
-        for(int i = 0; i < columnIndex; i++)
+        for(int i = 0; i < BOARD_SIZE; i++)
         {
             if(board[rowIndex][i] == numberToInsert){
                 return false;
