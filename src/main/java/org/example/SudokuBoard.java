@@ -4,17 +4,50 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+
+import static java.lang.System.exit;
+
 public class SudokuBoard {
     public void fillBoard()
     {
+        List<Integer> arrayToFillFirstRow = shuffleNumbers();
         for(int i = 0; i < BOARD_SIZE; i++)
         {
+            board[0][i] = arrayToFillFirstRow.get(i);
+        }
+
+        for(int i = 1; i < BOARD_SIZE; i++)
+        {
             List<Integer> arrayToFillBoard = shuffleNumbers();
+            int tmp = 0;
+
             for(int j = 0; j < BOARD_SIZE; j++)
             {
-                board[i][j] = arrayToFillBoard.get(j);
+                int numberToInsert = arrayToFillBoard.get(tmp);
+
+                if(checkIfNumberCanBeInsert(i, j, numberToInsert)){
+
+                    board[i][j] = numberToInsert;
+                    tmp++;
+
+                }
+                else {
+                    printBoard();
+                    exit(0);
+                }
+
             }
         }
+    }
+
+    public boolean checkIfNumberCanBeInsert(int rowIndex, int columnIndex, int numberToInsert)
+    {
+        if(checkIfColumIsRight(rowIndex, columnIndex, numberToInsert)){
+            if(checkIfRowIsRight(rowIndex, columnIndex, numberToInsert)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean checkIfColumIsRight(int rowIndex, int columnIndex, int numberToInsert)
