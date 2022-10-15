@@ -8,12 +8,16 @@ import java.util.Random;
 import static java.lang.System.exit;
 
 public class SudokuBoard {
+
+    private static int BOARD_SIZE = 9;
+    private static List<Integer> NUMBERS_TO_MIX = new LinkedList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
+    private int board[][] = new int [9][9];
+
     public void fillBoard()
     {
         fillFirstRow();
-        if(fillTheRestOfTheBoard()){
-            System.out.println("SUCCESS!!!");
-        }
+        fillTheRestOfTheBoard();
+
     }
 
     public boolean fillTheRestOfTheBoard()
@@ -24,7 +28,7 @@ public class SudokuBoard {
             {
                 if(board[i][j] == 0) {
                     for (int numberToInsert = 1; numberToInsert <= BOARD_SIZE; numberToInsert++) {
-                        if (checkIfNumberCanBeInsert(i, j, numberToInsert)) {
+                        if (isNumberValid(i, j, numberToInsert)) {
                             board[i][j] = numberToInsert;
 
                             if (fillTheRestOfTheBoard()) {
@@ -51,11 +55,11 @@ public class SudokuBoard {
         }
     }
 
-    public boolean checkIfNumberCanBeInsert(int rowIndex, int columnIndex, int numberToInsert)
+    public boolean isNumberValid(int rowIndex, int columnIndex, int numberToInsert)
     {
-        if(checkIfColumIsRight(rowIndex, columnIndex, numberToInsert)){
-            if(checkIfRowIsRight(rowIndex, columnIndex, numberToInsert)){
-                if(checkIfBoxIsRight(rowIndex, columnIndex, numberToInsert)){
+        if(isColumnValid(rowIndex, columnIndex, numberToInsert)){
+            if(isRowValid(rowIndex, columnIndex, numberToInsert)){
+                if(isBoxValid(rowIndex, columnIndex, numberToInsert)){
                     return true;
                 }
             }
@@ -63,7 +67,7 @@ public class SudokuBoard {
         return false;
     }
 
-    public boolean checkIfColumIsRight(int rowIndex, int columnIndex, int numberToInsert)
+    public boolean isColumnValid(int rowIndex, int columnIndex, int numberToInsert)
     {
         for(int i = 0; i < BOARD_SIZE; i++)
         {
@@ -74,7 +78,7 @@ public class SudokuBoard {
         return true;
     }
 
-    public boolean checkIfRowIsRight(int rowIndex, int columnIndex, int numberToInsert)
+    public boolean isRowValid(int rowIndex, int columnIndex, int numberToInsert)
     {
         for(int i = 0; i < BOARD_SIZE; i++)
         {
@@ -85,7 +89,7 @@ public class SudokuBoard {
         return true;
     }
 
-    public boolean checkIfBoxIsRight(int rowIndex, int columnIndex, int numberToInsert)
+    public boolean isBoxValid(int rowIndex, int columnIndex, int numberToInsert)
     {
        int localBoxRowIndex = (rowIndex - (rowIndex % 3));
        int localBoxColumnIndex = (columnIndex - (columnIndex % 3));
@@ -105,14 +109,15 @@ public class SudokuBoard {
 
     public List shuffleNumbers()
     {
-        List tempList = new LinkedList(NUMBERS_TO_MIX);
+        List tmpList = new LinkedList(NUMBERS_TO_MIX);
         List arrayToFillBoard = new LinkedList();
         Random rand = new Random();
+
         for(int i = 0; i < BOARD_SIZE; i++)
         {
-            int indexToTake = rand.nextInt(tempList.size());
-            arrayToFillBoard.add(tempList.get(indexToTake));
-            tempList.remove(indexToTake);
+            int indexToTake = rand.nextInt(tmpList.size());
+            arrayToFillBoard.add(tmpList.get(indexToTake));
+            tmpList.remove(indexToTake);
         }
         return arrayToFillBoard;
     }
@@ -132,9 +137,4 @@ public class SudokuBoard {
             System.out.println();
         }
     }
-
-
-    private static int BOARD_SIZE = 9;
-    private int board[][] = new int [9][9];
-    private static List<Integer> NUMBERS_TO_MIX = new LinkedList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
 }
