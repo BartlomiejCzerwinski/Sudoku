@@ -124,16 +124,13 @@ public class SudokuBoard {
 
     public void printBoard()
     {
-        for(int i = 0; i < BOARD_SIZE; i++)
+        for(int row = 0; row < BOARD_SIZE; row++)
         {
-            String tmp ="";
-            for(int j = 0; j < BOARD_SIZE; j++)
+            for(int column = 0; column < BOARD_SIZE; column++)
             {
-                int x = board[i][j];
-                tmp += x;
-                tmp += "  ";
+                System.out.print(board[row][column] + "  ");
             }
-            System.out.println(tmp);
+            System.out.println();
             System.out.println();
         }
     }
