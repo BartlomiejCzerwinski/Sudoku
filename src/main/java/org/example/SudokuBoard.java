@@ -17,29 +17,33 @@ public class SudokuBoard {
     {
         fillFirstRow();
         fillTheRestOfTheBoard();
-
     }
 
     public boolean fillTheRestOfTheBoard()
     {
-        for(int i = 1; i < BOARD_SIZE; i++)
+        for(int row = 1; row < BOARD_SIZE; row++)
         {
-            for(int j = 0; j < BOARD_SIZE; j++)
+            for(int column = 0; column < BOARD_SIZE; column++)
             {
-                if(board[i][j] == 0) {
-                    for (int numberToInsert = 1; numberToInsert <= BOARD_SIZE; numberToInsert++) {
-                        if (isNumberValid(i, j, numberToInsert)) {
-                            board[i][j] = numberToInsert;
 
+                if(board[row][column] == 0) {
+
+                    for (int numberToInsert = 1; numberToInsert <= BOARD_SIZE; numberToInsert++) {
+
+                        if (isNumberValid(row, column, numberToInsert)) {
+
+                            board[row][column] = numberToInsert;
                             if (fillTheRestOfTheBoard()) {
                                 return true;
                             }
                             else{
-                                board[i][j] = 0;
+                                board[row][column] = 0;
                             }
                         }
+
                     }
                     return false;
+
                 }
             }
         }
@@ -57,21 +61,19 @@ public class SudokuBoard {
 
     public boolean isNumberValid(int rowIndex, int columnIndex, int numberToInsert)
     {
-        if(isColumnValid(rowIndex, columnIndex, numberToInsert)){
-            if(isRowValid(rowIndex, columnIndex, numberToInsert)){
-                if(isBoxValid(rowIndex, columnIndex, numberToInsert)){
+        if(isColumnValid(rowIndex, columnIndex, numberToInsert) &&
+                isRowValid(rowIndex, columnIndex, numberToInsert) &&
+                    isBoxValid(rowIndex, columnIndex, numberToInsert))
                     return true;
-                }
-            }
-        }
+
         return false;
     }
 
     public boolean isColumnValid(int rowIndex, int columnIndex, int numberToInsert)
     {
-        for(int i = 0; i < BOARD_SIZE; i++)
+        for(int row = 0; row < rowIndex; row++)
         {
-            if(board[i][columnIndex] == numberToInsert){
+            if(board[row][columnIndex] == numberToInsert){
                 return false;
             }
         }
@@ -80,9 +82,9 @@ public class SudokuBoard {
 
     public boolean isRowValid(int rowIndex, int columnIndex, int numberToInsert)
     {
-        for(int i = 0; i < BOARD_SIZE; i++)
+        for(int column = 0; column < columnIndex; column++)
         {
-            if(board[rowIndex][i] == numberToInsert){
+            if(board[rowIndex][column] == numberToInsert){
                 return false;
             }
         }
@@ -93,13 +95,10 @@ public class SudokuBoard {
     {
        int localBoxRowIndex = (rowIndex - (rowIndex % 3));
        int localBoxColumnIndex = (columnIndex - (columnIndex % 3));
-        System.out.println(localBoxRowIndex);
-        System.out.println(localBoxColumnIndex);
-       for(int i = localBoxRowIndex; i < localBoxRowIndex + 3; i++){
-           for(int j = localBoxColumnIndex; j < localBoxColumnIndex + 3; j++){
-               System.out.println(board[i][j]);
-               if(board[i][j] == numberToInsert){
-                   System.out.println("number to insert:" + numberToInsert);
+
+       for(int row = localBoxRowIndex; row < localBoxRowIndex + 3; row++){
+           for(int column = localBoxColumnIndex; column < localBoxColumnIndex + 3; column++){
+               if(board[row][column] == numberToInsert){
                    return false;
                }
            }
@@ -110,16 +109,16 @@ public class SudokuBoard {
     public List shuffleNumbers()
     {
         List tmpList = new LinkedList(NUMBERS_TO_MIX);
-        List arrayToFillBoard = new LinkedList();
+        List listToFillFirstRow = new LinkedList();
         Random rand = new Random();
 
         for(int i = 0; i < BOARD_SIZE; i++)
         {
             int indexToTake = rand.nextInt(tmpList.size());
-            arrayToFillBoard.add(tmpList.get(indexToTake));
+            listToFillFirstRow.add(tmpList.get(indexToTake));
             tmpList.remove(indexToTake);
         }
-        return arrayToFillBoard;
+        return listToFillFirstRow;
     }
 
     public void printBoard()
