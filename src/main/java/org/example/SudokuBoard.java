@@ -139,4 +139,8 @@ public class SudokuBoard {
         return output;
     }
 
+    public int getFieldValue(int a, int b) {
+        int tmp = board[a][b];
+        return tmp;
+    }
 }
