@@ -139,8 +139,12 @@ public class SudokuBoard {
         return output;
     }
 
-    public int getFieldValue(int a, int b) {
-        int tmp = board[a][b];
+    public int getFieldValue(int x, int y) {
+        int tmp = board[x][y];
         return tmp;
+    }
+
+    public void setFieldValue(int x, int y, int value) {
+        board[x][y] = value;
     }
 }
