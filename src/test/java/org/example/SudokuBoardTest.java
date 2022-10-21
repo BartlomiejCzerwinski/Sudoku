@@ -10,7 +10,7 @@ class SudokuBoardTest {
     @Test
     public void testFillBoard(){
         SudokuBoard sudokuBoard = new SudokuBoard();
-        sudokuBoard.fillBoard();
+        sudokuBoard.solveGame();
         assertEquals(true, sudokuBoard.isBoardValid());
     }
 
@@ -19,8 +19,8 @@ class SudokuBoardTest {
         SudokuBoard sudokuBoard1 = new SudokuBoard();
         SudokuBoard sudokuBoard2 = new SudokuBoard();
 
-        sudokuBoard1.fillBoard();
-        sudokuBoard2.fillBoard();
+        sudokuBoard1.solveGame();
+        sudokuBoard2.solveGame();
 
         assertEquals(true, sudokuBoard1.isBoardValid());
         assertEquals(true, sudokuBoard2.isBoardValid());
