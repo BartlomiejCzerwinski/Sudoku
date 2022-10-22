@@ -105,7 +105,5 @@ public class SudokuBoard {
         board[x][y] = value;
     }
 
-    public int[][] getBoard() {
-        return board;
-    }
+
 }

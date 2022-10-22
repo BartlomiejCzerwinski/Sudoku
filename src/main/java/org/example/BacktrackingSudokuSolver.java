@@ -18,6 +18,7 @@ public class BacktrackingSudokuSolver implements SudokuSolver {
     }
 
     public boolean fillTheRestOfTheBoard(SudokuBoard board) {
+        // źródło: https://www.youtube.com/watch?v=mcXc8Mva2bA&t=916s
         for (int row = 1; row < BOARD_SIZE; row++) {
             for (int column = 0; column < BOARD_SIZE; column++) {
 
