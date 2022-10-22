@@ -9,12 +9,17 @@ public class SudokuBoard {
     static int BOARD_SIZE = 9;
     private int[][] board = new int [9][9];
 
-    public void solveGame() {
-    BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
-    backtrackingSudokuSolver.solve(this);
+    private SudokuSolver sudokuSolver;
+
+    public SudokuBoard(SudokuSolver sudokuSolver) {
+        this.sudokuSolver = sudokuSolver;
     }
 
-    public boolean isColumnValid(int rowIndex, int columnIndex, int numberToInsert) {
+    public void solveGame() {
+    sudokuSolver.solve(this);
+    }
+
+    private boolean isColumnValid(int rowIndex, int columnIndex, int numberToInsert) {
         for (int row = 0; row < rowIndex; row++) {
             if (board[row][columnIndex] == numberToInsert) {
                 return false;
@@ -23,7 +28,7 @@ public class SudokuBoard {
         return true;
     }
 
-    public boolean isRowValid(int rowIndex, int columnIndex, int numberToInsert) {
+    private boolean isRowValid(int rowIndex, int columnIndex, int numberToInsert) {
         for (int column = 0; column < columnIndex; column++) {
             if (board[rowIndex][column] == numberToInsert) {
                 return false;
@@ -32,7 +37,7 @@ public class SudokuBoard {
         return true;
     }
 
-    public boolean isBoxValid(int rowIndex, int columnIndex, int numberToInsert) {
+    private boolean isBoxValid(int rowIndex, int columnIndex, int numberToInsert) {
         int localBoxRowIndex = (rowIndex - (rowIndex % 3));
         int localBoxColumnIndex = (columnIndex - (columnIndex % 3));
 

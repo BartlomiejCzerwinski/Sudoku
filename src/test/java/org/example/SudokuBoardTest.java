@@ -9,15 +9,15 @@ class SudokuBoardTest {
 
     @Test
     public void testFillBoard(){
-        SudokuBoard sudokuBoard = new SudokuBoard();
+        SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
         sudokuBoard.solveGame();
         assertEquals(true, sudokuBoard.isBoardValid());
     }
 
     @Test
     public void testIsBoardsNotTheSame(){
-        SudokuBoard sudokuBoard1 = new SudokuBoard();
-        SudokuBoard sudokuBoard2 = new SudokuBoard();
+        SudokuBoard sudokuBoard1 = new SudokuBoard(new BacktrackingSudokuSolver());
+        SudokuBoard sudokuBoard2 = new SudokuBoard(new BacktrackingSudokuSolver());
 
         sudokuBoard1.solveGame();
         sudokuBoard2.solveGame();
