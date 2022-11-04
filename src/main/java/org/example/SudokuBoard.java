@@ -105,5 +105,4 @@ public class SudokuBoard {
         board[x][y] = value;
     }
 
-
 }
