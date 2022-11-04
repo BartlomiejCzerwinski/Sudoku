@@ -7,11 +7,16 @@ import java.util.Random;
 
 public class SudokuBoard {
     static int BOARD_SIZE = 9;
-    private int[][] board = new int [9][9];
+    private SudokuField[][] board = new SudokuField[9][9];
 
     private SudokuSolver sudokuSolver;
 
     public SudokuBoard(SudokuSolver sudokuSolver) {
+        for(int i = 0; i < BOARD_SIZE; i++)
+        {
+            for (int j = 0; j < BOARD_SIZE; j++)
+            board[i][j] = new SudokuField(0);
+        }
         this.sudokuSolver = sudokuSolver;
     }
 
@@ -21,7 +26,7 @@ public class SudokuBoard {
 
     private boolean isColumnValid(int rowIndex, int columnIndex, int numberToInsert) {
         for (int row = 0; row < rowIndex; row++) {
-            if (board[row][columnIndex] == numberToInsert) {
+            if (board[row][columnIndex].getFieldValue() == numberToInsert) {
                 return false;
             }
         }
@@ -30,7 +35,7 @@ public class SudokuBoard {
 
     private boolean isRowValid(int rowIndex, int columnIndex, int numberToInsert) {
         for (int column = 0; column < columnIndex; column++) {
-            if (board[rowIndex][column] == numberToInsert) {
+            if (board[rowIndex][column].getFieldValue() == numberToInsert) {
                 return false;
             }
         }
@@ -43,7 +48,7 @@ public class SudokuBoard {
 
         for (int row = localBoxRowIndex; row < localBoxRowIndex + 3; row++) {
             for (int column = localBoxColumnIndex; column < localBoxColumnIndex + 3; column++) {
-                if (board[row][column] == numberToInsert) {
+                if (board[row][column].getFieldValue() == numberToInsert) {
                     return false;
                 }
             }
@@ -55,13 +60,13 @@ public class SudokuBoard {
         for (int row = 0; row < BOARD_SIZE; row++) {
             for (int column = 0; column < BOARD_SIZE; column++) {
 
-                int tmp = board[row][column];
-                board[row][column] = 0;
+                int tmp = board[row][column].getFieldValue();
+                board[row][column].setFieldValue(0);
 
                 if (!isNumberValid(row, column, tmp)) {
                     return false;
                 }
-                board[row][column] = tmp;
+                board[row][column].setFieldValue(tmp);
             }
         }
         return true;
@@ -70,7 +75,7 @@ public class SudokuBoard {
     public void printBoard() {
         for (int row = 0; row < BOARD_SIZE; row++) {
             for (int column = 0; column < BOARD_SIZE; column++) {
-                System.out.print(board[row][column] + "  ");
+                System.out.print(board[row][column].getFieldValue() + "  ");
             }
             System.out.println();
             System.out.println();
@@ -97,12 +102,12 @@ public class SudokuBoard {
     }
 
     public int getFieldValue(int x, int y) {
-        int tmp = board[x][y];
+        int tmp = board[x][y].getFieldValue();
         return tmp;
     }
 
     public void setFieldValue(int x, int y, int value) {
-        board[x][y] = value;
+        board[x][y].setFieldValue(value);
     }
 
 }
