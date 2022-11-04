@@ -20,6 +20,37 @@ public class SudokuBoard {
         this.sudokuSolver = sudokuSolver;
     }
 
+    public SudokuRow getRow(int y) {
+        SudokuRow sudokuRow = new SudokuRow();
+        for(int columnIndex = 0; columnIndex < BOARD_SIZE; columnIndex++)
+        {
+            sudokuRow.setRowField(columnIndex, board[y][columnIndex].getFieldValue());
+        }
+        return sudokuRow;
+    }
+
+    public SudokuColumn getColumn(int x) {
+        SudokuColumn sudokuColumn = new SudokuColumn();
+        for(int rowIndex = 0; rowIndex < BOARD_SIZE; rowIndex++)
+        {
+            sudokuColumn.setColumnField(rowIndex, board[rowIndex][x].getFieldValue());
+        }
+        return sudokuColumn;
+    }
+
+    public SudokuBox getBox(int x, int y) {
+        int boxRowIndex = (x - (x % 3));
+        int boxColumnIndex = (y - (y % 3));
+        SudokuBox sudokuBox = new SudokuBox();
+        for (int row = boxRowIndex; row < boxRowIndex + 3; row++) {
+            for (int column = boxColumnIndex; column < boxColumnIndex + 3; column++) {
+                sudokuBox.setBoxField(row, column, board[row][column].getFieldValue());
+            }
+
+        }
+        return sudokuBox;
+    }
+
     public void solveGame() {
     sudokuSolver.solve(this);
     }
