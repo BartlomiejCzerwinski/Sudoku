@@ -37,24 +37,17 @@ public class SudokuBoard {
     }
 
     public SudokuBox getBox(int x, int y) {
-        int boxRowIndex = (x - (x % 3));
-        int boxColumnIndex = (y - (y % 3));
         SudokuBox sudokuBox = new SudokuBox();
-        for (int row = boxRowIndex; row < boxRowIndex + 3; row++) {
-            for (int column = boxColumnIndex; column < boxColumnIndex + 3; column++) {
-                sudokuBox.setBoxField(row, column, board[row][column].getFieldValue());
+        int localBoxRowIndex = (x - (x % 3));
+        int localBoxColumnIndex = (y - (y % 3));
+
+        for (int row = localBoxRowIndex, i = 0; row < localBoxRowIndex + 3; row++, i++) {
+            for (int column = localBoxColumnIndex, j = 0; column < localBoxColumnIndex + 3; column++, j++) {
+                    sudokuBox.setBoxField(i, j, board[row][column].getFieldValue());
+                }
             }
 
-        }
         return sudokuBox;
-    }
-
-    private boolean checkBoard() {
-        for(int x = 0; x < BOARD_SIZE; x++) {
-            for (int y = 0; y < BOARD_SIZE; y++) {
-
-            }
-        }
     }
 
     public void solveGame() {
@@ -62,36 +55,39 @@ public class SudokuBoard {
     }
 
     private boolean isColumnValid(int rowIndex, int columnIndex, int numberToInsert) {
-        for (int row = 0; row < rowIndex; row++) {
-            if (board[row][columnIndex].getFieldValue() == numberToInsert) {
-                return false;
-            }
+        SudokuColumn sudokuColumn = getColumn(columnIndex);
+        sudokuColumn.setColumnField(columnIndex, numberToInsert);
+        if (sudokuColumn.verify()) {
+            return true;
         }
-        return true;
-        
+        else {
+            return false;
+        }
+
     }
 
     private boolean isRowValid(int rowIndex, int columnIndex, int numberToInsert) {
-        for (int column = 0; column < columnIndex; column++) {
-            if (board[rowIndex][column].getFieldValue() == numberToInsert) {
-                return false;
-            }
+        SudokuRow sudokuRow = getRow(rowIndex);
+        sudokuRow.setRowField(rowIndex, numberToInsert);
+        if (sudokuRow.verify()) {
+            return true;
         }
-        return true;
+        else {
+            return false;
+        }
     }
 
     private boolean isBoxValid(int rowIndex, int columnIndex, int numberToInsert) {
-        int localBoxRowIndex = (rowIndex - (rowIndex % 3));
-        int localBoxColumnIndex = (columnIndex - (columnIndex % 3));
-
-        for (int row = localBoxRowIndex; row < localBoxRowIndex + 3; row++) {
-            for (int column = localBoxColumnIndex; column < localBoxColumnIndex + 3; column++) {
-                if (board[row][column].getFieldValue() == numberToInsert) {
-                    return false;
-                }
-            }
+        SudokuBox sudokuBox = getBox(rowIndex, columnIndex);
+        int boxRowIndex = (rowIndex % 3);
+        int boxColumnIndex = (columnIndex  % 3);
+        sudokuBox.setBoxField(boxRowIndex, boxColumnIndex, numberToInsert);
+        if (sudokuBox.verify()) {
+            return true;
         }
-        return true;
+        else {
+            return false;
+        }
     }
 
     public boolean isBoardValid() {
