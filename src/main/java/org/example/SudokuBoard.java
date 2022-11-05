@@ -12,18 +12,17 @@ public class SudokuBoard {
     private SudokuSolver sudokuSolver;
 
     public SudokuBoard(SudokuSolver sudokuSolver) {
-        for(int i = 0; i < BOARD_SIZE; i++)
-        {
-            for (int j = 0; j < BOARD_SIZE; j++)
-            board[i][j] = new SudokuField(0);
+        for (int i = 0; i < BOARD_SIZE; i++) {
+            for (int j = 0; j < BOARD_SIZE; j++) {
+                board[i][j] = new SudokuField(0);
+            }
         }
         this.sudokuSolver = sudokuSolver;
     }
 
     public SudokuRow getRow(int y) {
         SudokuRow sudokuRow = new SudokuRow();
-        for(int columnIndex = 0; columnIndex < BOARD_SIZE; columnIndex++)
-        {
+        for (int columnIndex = 0; columnIndex < BOARD_SIZE; columnIndex++) {
             sudokuRow.setRowField(columnIndex, board[y][columnIndex].getFieldValue());
         }
         return sudokuRow;
@@ -31,8 +30,7 @@ public class SudokuBoard {
 
     public SudokuColumn getColumn(int x) {
         SudokuColumn sudokuColumn = new SudokuColumn();
-        for(int rowIndex = 0; rowIndex < BOARD_SIZE; rowIndex++)
-        {
+        for (int rowIndex = 0; rowIndex < BOARD_SIZE; rowIndex++) {
             sudokuColumn.setColumnField(rowIndex, board[rowIndex][x].getFieldValue());
         }
         return sudokuColumn;
@@ -51,8 +49,16 @@ public class SudokuBoard {
         return sudokuBox;
     }
 
+    private boolean checkBoard() {
+        for(int x = 0; x < BOARD_SIZE; x++) {
+            for (int y = 0; y < BOARD_SIZE; y++) {
+
+            }
+        }
+    }
+
     public void solveGame() {
-    sudokuSolver.solve(this);
+        sudokuSolver.solve(this);
     }
 
     private boolean isColumnValid(int rowIndex, int columnIndex, int numberToInsert) {
@@ -62,6 +68,7 @@ public class SudokuBoard {
             }
         }
         return true;
+        
     }
 
     private boolean isRowValid(int rowIndex, int columnIndex, int numberToInsert) {
