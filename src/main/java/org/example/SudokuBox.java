@@ -1,13 +1,14 @@
 package org.example;
 
 public class SudokuBox {
+    private int boxSize = 3;
     private SudokuField[][] box = new SudokuField[3][3];
 
     public boolean verify() {
         for (int i = 1; i <= 9; i++) {
             int tmp = 0;
-            for (int a = 0; a < 3; a++) {
-                for (int b = 0; b < 3; b++) {
+            for (int a = 0; a < boxSize; a++) {
+                for (int b = 0; b < boxSize; b++) {
                     if (box[a][b].getFieldValue() == i) {
                         tmp++;
                     }
@@ -21,8 +22,8 @@ public class SudokuBox {
     }
 
     public SudokuBox() {
-        for (int i = 0; i < 3; i++) {
-            for (int y = 0; y < 3; y++) {
+        for (int i = 0; i < boxSize; i++) {
+            for (int y = 0; y < boxSize; y++) {
                 this.box[i][y] = new SudokuField(0);
             }
         }

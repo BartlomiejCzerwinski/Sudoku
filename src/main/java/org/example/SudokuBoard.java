@@ -1,10 +1,5 @@
 package org.example;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
-
 public class SudokuBoard {
     static int BOARD_SIZE = 9;
     private SudokuField[][] board = new SudokuField[9][9];
@@ -22,8 +17,8 @@ public class SudokuBoard {
 
     public SudokuRow getRow(int y) {
         SudokuRow sudokuRow = new SudokuRow();
-        for (int columnIndex = 0; columnIndex < BOARD_SIZE; columnIndex++) {
 
+        for (int columnIndex = 0; columnIndex < BOARD_SIZE; columnIndex++) {
             sudokuRow.setRowField(columnIndex, board[y][columnIndex].getFieldValue());
         }
         return sudokuRow;
@@ -31,6 +26,7 @@ public class SudokuBoard {
 
     public SudokuColumn getColumn(int x) {
         SudokuColumn sudokuColumn = new SudokuColumn();
+
         for (int rowIndex = 0; rowIndex < BOARD_SIZE; rowIndex++) {
             sudokuColumn.setColumnField(rowIndex, board[rowIndex][x].getFieldValue());
         }
@@ -43,11 +39,11 @@ public class SudokuBoard {
         int localBoxColumnIndex = (y - (y % 3));
 
         for (int row = localBoxRowIndex, i = 0; row < localBoxRowIndex + 3; row++, i++) {
-            for (int column = localBoxColumnIndex, j = 0; column < localBoxColumnIndex + 3; column++, j++) {
+            for (int column = localBoxColumnIndex, j = 0;
+                 column < localBoxColumnIndex + 3; column++, j++) {
                     sudokuBox.setBoxField(i, j, board[row][column].getFieldValue());
                 }
             }
-
         return sudokuBox;
     }
 
@@ -58,11 +54,11 @@ public class SudokuBoard {
     private boolean isColumnValid(int rowIndex, int columnIndex, int numberToInsert) {
         SudokuColumn sudokuColumn = new SudokuColumn();
         sudokuColumn = getColumn(columnIndex);
-        sudokuColumn.setColumnField(columnIndex, numberToInsert);
+        sudokuColumn.setColumnField(rowIndex, numberToInsert);
+
         if (sudokuColumn.verify()) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
 
@@ -71,11 +67,11 @@ public class SudokuBoard {
     private boolean isRowValid(int rowIndex, int columnIndex, int numberToInsert) {
         SudokuRow sudokuRow = new SudokuRow();
         sudokuRow = getRow(rowIndex);
-        sudokuRow.setRowField(rowIndex, numberToInsert);
+        sudokuRow.setRowField(columnIndex, numberToInsert);
+
         if (sudokuRow.verify()) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -86,10 +82,10 @@ public class SudokuBoard {
         int boxRowIndex = (rowIndex % 3);
         int boxColumnIndex = (columnIndex  % 3);
         sudokuBox.setBoxField(boxRowIndex, boxColumnIndex, numberToInsert);
+
         if (sudokuBox.verify()) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -102,23 +98,12 @@ public class SudokuBoard {
                 board[row][column].setFieldValue(0);
 
                 if (!isNumberValid(row, column, tmp)) {
-                    System.out.println("tutaj sie wypierdalam"+row+" "+column);
                     return false;
                 }
                 board[row][column].setFieldValue(tmp);
             }
         }
         return true;
-    }
-
-    public void printBoard() {
-        for (int row = 0; row < BOARD_SIZE; row++) {
-            for (int column = 0; column < BOARD_SIZE; column++) {
-                System.out.print(board[row][column].getFieldValue() + "  ");
-            }
-            System.out.println();
-            System.out.println();
-        }
     }
 
     public boolean isNumberValid(int rowIndex, int columnIndex, int numberToInsert) {

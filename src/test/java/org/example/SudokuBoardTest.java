@@ -11,12 +11,11 @@ class SudokuBoardTest {
     public void testFillBoard(){
         SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
         sudokuBoard.solveGame();
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                assertEquals(true, sudokuBoard.isNumberValid(i, j, sudokuBoard.getFieldValue(i, j)));
-            }
-        }
-        //assertEquals(true, sudokuBoard.isBoardValid());
+
+        assertEquals(true, sudokuBoard.isBoardValid());
+        int fieldValue = sudokuBoard.getFieldValue(0,0);
+        sudokuBoard.setFieldValue(0, 1, fieldValue);
+        assertEquals(false, sudokuBoard.isBoardValid());
     }
 
     @Test
@@ -27,11 +26,10 @@ class SudokuBoardTest {
         sudokuBoard1.solveGame();
         sudokuBoard2.solveGame();
 
-        //assertEquals(true, sudokuBoard1.isBoardValid());
-        //assertEquals(true, sudokuBoard2.isBoardValid());
+        assertEquals(true, sudokuBoard1.isBoardValid());
+        assertEquals(true, sudokuBoard2.isBoardValid());
 
         assertNotEquals(sudokuBoard1.getBoardByText(), sudokuBoard2.getBoardByText());
     }
-
 
 }
