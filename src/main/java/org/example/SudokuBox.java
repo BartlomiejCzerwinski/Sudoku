@@ -6,9 +6,9 @@ public class SudokuBox {
     public boolean verify() {
         for (int i = 1; i <= 9; i++) {
             int tmp = 0;
-            for (SudokuField[] row : box) {
-                for (SudokuField element : row) {
-                    if (i == element.getFieldValue()) {
+            for (int a = 0; a < 3; a++) {
+                for (int b = 0; b < 3; b++) {
+                    if (box[a][b].getFieldValue() == i) {
                         tmp++;
                     }
                 }

@@ -6,8 +6,8 @@ public class SudokuColumn {
     public boolean verify() {
         for (int i = 1; i <= 9; i++) {
             int tmp = 0;
-            for (SudokuField element : column) {
-                if (element.getFieldValue() == i) {
+            for ( int j = 0; j < 9; j++) {
+                if (column[j].getFieldValue() == i) {
                     tmp++;
                 }
             }

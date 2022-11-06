@@ -7,6 +7,7 @@ public class Main {
         SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
         sudokuBoard.solveGame();
         sudokuBoard.printBoard();
+        System.out.println(sudokuBoard.getRow(1).verify());
     }
 
 }
