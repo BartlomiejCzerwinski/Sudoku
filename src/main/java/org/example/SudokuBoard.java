@@ -52,8 +52,7 @@ public class SudokuBoard {
     }
 
     private boolean isColumnValid(int rowIndex, int columnIndex, int numberToInsert) {
-        SudokuColumn sudokuColumn = new SudokuColumn();
-        sudokuColumn = getColumn(columnIndex);
+        SudokuColumn sudokuColumn = getColumn(columnIndex);
         sudokuColumn.setColumnField(rowIndex, numberToInsert);
 
         if (sudokuColumn.verify()) {
@@ -65,8 +64,7 @@ public class SudokuBoard {
     }
 
     private boolean isRowValid(int rowIndex, int columnIndex, int numberToInsert) {
-        SudokuRow sudokuRow = new SudokuRow();
-        sudokuRow = getRow(rowIndex);
+        SudokuRow sudokuRow = getRow(rowIndex);
         sudokuRow.setRowField(columnIndex, numberToInsert);
 
         if (sudokuRow.verify()) {
@@ -77,8 +75,7 @@ public class SudokuBoard {
     }
 
     private boolean isBoxValid(int rowIndex, int columnIndex, int numberToInsert) {
-        SudokuBox sudokuBox = new SudokuBox();
-        sudokuBox = getBox(rowIndex, columnIndex);
+        SudokuBox sudokuBox = getBox(rowIndex, columnIndex);
         int boxRowIndex = (rowIndex % 3);
         int boxColumnIndex = (columnIndex  % 3);
         sudokuBox.setBoxField(boxRowIndex, boxColumnIndex, numberToInsert);
