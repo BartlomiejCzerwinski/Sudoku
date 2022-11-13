@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -57,7 +58,7 @@
                     </reportSet>
                 </reportSets>
             </plugin>
-            <!-- na commitaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
@@ -68,7 +69,6 @@
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>3.19.0</version>
             </plugin>
-            <!-- na commitaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
         </plugins>
     </reporting>
 
@@ -158,12 +158,12 @@
             </plugin>
         </plugins>
     </build>
-    <!-- na commitaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
+
     <developers>
         <developer>
-            <id>wpisz_tu_nr_indeksu</id>
+            <id>242354</id>
             <name>Oskar Baranowski</name>
-            <email>wpisz_tu_nr_indeksu@edu.p.lodz.pl</email>
+            <email>242354@edu.p.lodz.pl</email>
         </developer>
         <developer>
             <id>242372</id>
@@ -172,6 +172,5 @@
         </developer>
     </developers>
 
-    <description>Projekt grupy laboratoryjnej AN01</description>
-    <!-- na commitaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
+    <description>Projekt grupy laboratoryjnej an_pn_1345_01</description>
 </project>

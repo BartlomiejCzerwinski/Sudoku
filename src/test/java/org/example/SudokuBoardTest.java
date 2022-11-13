@@ -1,9 +1,9 @@
 package org.example;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class SudokuBoardTest {
 
@@ -29,7 +29,7 @@ class SudokuBoardTest {
         assertEquals(true, sudokuBoard1.isBoardValid());
         assertEquals(true, sudokuBoard2.isBoardValid());
 
-        assertNotEquals(sudokuBoard1.getBoardByText(), sudokuBoard2.getBoardByText());
+        assertNotEquals(sudokuBoard1.toString(), sudokuBoard2.toString());
     }
 
 }
