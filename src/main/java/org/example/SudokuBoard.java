@@ -32,7 +32,7 @@ public class SudokuBoard {
 
         for (int columnIndex = 0; columnIndex < BOARD_SIZE; columnIndex++) {
             sudokuRow.setSudokuAreaField(columnIndex,
-                    board.get(y).get(columnIndex).getFieldValue());
+                    getFieldValue(y, columnIndex));
         }
         return sudokuRow;
     }
@@ -42,7 +42,7 @@ public class SudokuBoard {
 
         for (int rowIndex = 0; rowIndex < BOARD_SIZE; rowIndex++) {
             sudokuColumn.setSudokuAreaField(rowIndex,
-                    board.get(rowIndex).get(x).getFieldValue());
+                    getFieldValue(rowIndex, x));
         }
         return sudokuColumn;
     }
@@ -57,7 +57,7 @@ public class SudokuBoard {
                  column < localBoxColumnIndex + 3; column++, j++) {
                 int placeToInsertValue = (3 * i) + j;
                 sudokuBox.setSudokuAreaField(placeToInsertValue,
-                        board.get(row).get(column).getFieldValue());
+                        getFieldValue(row, column));
             }
         }
         return sudokuBox;
@@ -108,13 +108,13 @@ public class SudokuBoard {
         for (int row = 0; row < BOARD_SIZE; row++) {
             for (int column = 0; column < BOARD_SIZE; column++) {
 
-                int tmp = board.get(row).get(column).getFieldValue();
-                board.get(row).get(column).setFieldValue(0);
+                int tmp = getFieldValue(row, column);
+                setFieldValue(row, column, 0);
 
                 if (!isNumberValid(row, column, tmp)) {
                     return false;
                 }
-                board.get(row).get(column).setFieldValue(tmp);
+                setFieldValue(row, column, tmp);
             }
         }
         return true;
@@ -133,7 +133,7 @@ public class SudokuBoard {
         String output = "";
         for (int row = 0; row < BOARD_SIZE; row++) {
             for (int column = 0; column < BOARD_SIZE; column++) {
-                output += board.get(row).get(column);
+                output += getFieldValue(row, column);
             }
         }
         return output;
@@ -147,7 +147,7 @@ public class SudokuBoard {
     public void printBoard() {
         for (int row = 0; row < BOARD_SIZE; row++) {
             for (int column = 0; column < BOARD_SIZE; column++) {
-                System.out.print(board.get(row).get(column).getFieldValue() + "  ");
+                System.out.print(getFieldValue(row, column) + "  ");
             }
             System.out.println();
             System.out.println();
