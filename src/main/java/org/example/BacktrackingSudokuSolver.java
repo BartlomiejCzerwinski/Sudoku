@@ -2,14 +2,13 @@ package org.example;
 
 import static org.example.SudokuBoard.BOARD_SIZE;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
+import java.util.Collections;
 
 public class BacktrackingSudokuSolver implements SudokuSolver {
-    private static List<Integer> NUMBERS_TO_MIX =
-            new LinkedList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
+    private static ArrayList<Integer> NUMBERS_TO_MIX =
+            new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
 
     @Override
     public void solve(SudokuBoard board) {
@@ -45,24 +44,12 @@ public class BacktrackingSudokuSolver implements SudokuSolver {
     }
 
     public void fillFirstRow(SudokuBoard board) {
-        List<Integer> arrayToFillFirstRow = shuffleNumbers();
+        Collections.shuffle(NUMBERS_TO_MIX);
         for (int i = 0; i < BOARD_SIZE; i++) {
-            int valueToInsert = arrayToFillFirstRow.get(i);
+            int valueToInsert = NUMBERS_TO_MIX.get(i);
             board.setFieldValue(0, i, valueToInsert);
         }
     }
 
-    public List shuffleNumbers() {
-        List tmpList = new LinkedList(NUMBERS_TO_MIX);
-        List listToFillFirstRow = new LinkedList();
-        Random rand = new Random();
-
-        for (int i = 0; i < BOARD_SIZE; i++) {
-            int indexToTake = rand.nextInt(tmpList.size());
-            listToFillFirstRow.add(tmpList.get(indexToTake));
-            tmpList.remove(indexToTake);
-        }
-        return listToFillFirstRow;
-    }
 }
 
