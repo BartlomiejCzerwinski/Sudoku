@@ -10,6 +10,7 @@ public class BacktrackingSudokuSolver implements SudokuSolver {
     private static ArrayList<Integer> NUMBERS_TO_MIX =
             new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
 
+
     @Override
     public void solve(SudokuBoard board) {
         fillFirstRow(board);

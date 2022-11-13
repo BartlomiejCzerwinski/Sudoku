@@ -1,30 +1,26 @@
 package org.example;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 public class SudokuBoard {
     static int BOARD_SIZE = 9;
-    private List<List<SudokuField>> board = new ArrayList<>();
+    private List<SudokuField> board = Arrays.asList(new SudokuField[81]);
+
     private SudokuSolver sudokuSolver;
+
+    public SudokuBoard(SudokuSolver sudokuSolver) {
+        for (int i = 0; i < BOARD_SIZE * BOARD_SIZE; i++) {
+            board.set(i, new SudokuField(0));
+        }
+        this.sudokuSolver = sudokuSolver;
+
+    }
 
     public static void main(String[] args) {
         SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
         sudokuBoard.solveGame();
         sudokuBoard.printBoard();
-    }
-
-    public SudokuBoard(SudokuSolver sudokuSolver) {
-        for (int i = 0; i < BOARD_SIZE; i++) {
-            board.add(new ArrayList<SudokuField>());
-            board.set(i, Arrays.asList(new SudokuField[BOARD_SIZE]));
-            for (int j = 0; j < BOARD_SIZE; j++) {
-                board.get(i).set(j, new SudokuField(0));
-            }
-        }
-        this.sudokuSolver = sudokuSolver;
     }
 
     public SudokuRow getRow(int y) {
@@ -140,7 +136,9 @@ public class SudokuBoard {
     }
 
     public int getFieldValue(int x, int y) {
-        int tmp = board.get(x).get(y).getFieldValue();
+        int positionInList = (9 * x) + y;
+        //int tmp = listOfFields.get(positionInList).getFieldValue();
+        int tmp = board.get(positionInList).getFieldValue();
         return tmp;
     }
 
@@ -155,7 +153,9 @@ public class SudokuBoard {
     }
 
     public void setFieldValue(int x, int y, int value) {
-        board.get(x).get(y).setFieldValue(value);
+        int positionInList = (9 * x) + y;
+        //listOfFields.get(positionInList).setFieldValue(value);
+        board.get(positionInList).setFieldValue(value);
     }
 
 }
