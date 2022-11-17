@@ -6,6 +6,7 @@ package org.example;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class SudokuBoard {
     static int BOARD_SIZE = 9;
@@ -147,4 +148,20 @@ public class SudokuBoard {
         board.get(positionInList).setFieldValue(value);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        SudokuBoard that = (SudokuBoard) o;
+        return Objects.equals(board, that.board) && Objects.equals(sudokuSolver, that.sudokuSolver);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(board, sudokuSolver);
+    }
 }

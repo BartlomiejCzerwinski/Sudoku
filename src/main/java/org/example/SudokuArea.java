@@ -6,6 +6,7 @@ package org.example;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class SudokuArea {
     private int size = 9;
@@ -35,5 +36,31 @@ public class SudokuArea {
     public void setSudokuAreaField(int positionIndex, int value) {
 
         this.sudokuFieldsArray.get(positionIndex).setFieldValue(value);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        SudokuArea that = (SudokuArea) o;
+        return size == that.size && Objects.equals(sudokuFieldsArray, that.sudokuFieldsArray);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(size, sudokuFieldsArray);
+    }
+
+    @Override
+    public String toString() {
+        String tmp = "";
+        for (SudokuField sudokuField : sudokuFieldsArray) {
+            tmp += sudokuField.getFieldValue() + " ";
+        }
+        return tmp;
     }
 }
