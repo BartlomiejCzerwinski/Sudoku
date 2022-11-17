@@ -1,3 +1,7 @@
+/**
+ * The GNU General Public License (GPL).
+ */
+
 package org.example;
 
 import org.junit.jupiter.api.Test;

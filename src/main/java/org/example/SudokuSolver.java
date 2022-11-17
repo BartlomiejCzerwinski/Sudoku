@@ -1,5 +1,9 @@
+/**
+ * The GNU General Public License (GPL).
+ */
+
 package org.example;
 
 public interface SudokuSolver {
-    public void solve(SudokuBoard board);
+    void solve(SudokuBoard board);
 }

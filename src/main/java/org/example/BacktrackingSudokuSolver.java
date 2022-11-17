@@ -1,3 +1,7 @@
+/**
+ * The GNU General Public License (GPL).
+ */
+
 package org.example;
 
 import static org.example.SudokuBoard.BOARD_SIZE;
