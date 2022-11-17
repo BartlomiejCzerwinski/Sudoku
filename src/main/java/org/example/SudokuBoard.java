@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Objects;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class SudokuBoard {
     static int BOARD_SIZE = 9;
@@ -22,6 +23,12 @@ public class SudokuBoard {
         }
         this.sudokuSolver = sudokuSolver;
 
+    }
+
+    public static void main(String []args) {
+        SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
+        sudokuBoard.solveGame();
+        System.out.println(sudokuBoard.toString());
     }
 
 
@@ -127,16 +134,6 @@ public class SudokuBoard {
         return false;
     }
 
-    public String toString() {
-        String output = "";
-        for (int row = 0; row < BOARD_SIZE; row++) {
-            for (int column = 0; column < BOARD_SIZE; column++) {
-                output += getFieldValue(row, column);
-            }
-        }
-        return output;
-    }
-
     public int getFieldValue(int x, int y) {
         int positionInList = 9 * x + y;
         int tmp = board.get(positionInList).getFieldValue();
@@ -146,6 +143,11 @@ public class SudokuBoard {
     public void setFieldValue(int x, int y, int value) {
         int positionInList = 9 * x + y;
         board.get(positionInList).setFieldValue(value);
+    }
+
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append(board).toString();
     }
 
     @Override
@@ -166,7 +168,7 @@ public class SudokuBoard {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(10,10).append(BOARD_SIZE)
+        return new HashCodeBuilder(9,9).append(BOARD_SIZE)
                 .append(board)
                 .append(sudokuSolver)
                 .toHashCode();
