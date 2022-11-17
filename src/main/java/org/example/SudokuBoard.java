@@ -7,6 +7,8 @@ package org.example;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class SudokuBoard {
     static int BOARD_SIZE = 9;
@@ -137,14 +139,12 @@ public class SudokuBoard {
 
     public int getFieldValue(int x, int y) {
         int positionInList = 9 * x + y;
-        //int tmp = listOfFields.get(positionInList).getFieldValue();
         int tmp = board.get(positionInList).getFieldValue();
         return tmp;
     }
 
     public void setFieldValue(int x, int y, int value) {
         int positionInList = 9 * x + y;
-        //listOfFields.get(positionInList).setFieldValue(value);
         board.get(positionInList).setFieldValue(value);
     }
 
@@ -157,11 +157,18 @@ public class SudokuBoard {
             return false;
         }
         SudokuBoard that = (SudokuBoard) o;
-        return Objects.equals(board, that.board) && Objects.equals(sudokuSolver, that.sudokuSolver);
+        return new EqualsBuilder()
+                .append(BOARD_SIZE, that.BOARD_SIZE)
+                .append(board, this.board)
+                .append(sudokuSolver, this.sudokuSolver)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(board, sudokuSolver);
+        return new HashCodeBuilder(10,10).append(BOARD_SIZE)
+                .append(board)
+                .append(sudokuSolver)
+                .toHashCode();
     }
 }
