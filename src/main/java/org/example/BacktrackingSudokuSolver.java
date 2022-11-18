@@ -9,8 +9,6 @@ import static org.example.SudokuBoard.BOARD_SIZE;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class BacktrackingSudokuSolver implements SudokuSolver {
     private static ArrayList<Integer> NUMBERS_TO_MIX =
@@ -57,6 +55,6 @@ public class BacktrackingSudokuSolver implements SudokuSolver {
             board.setFieldValue(0, i, valueToInsert);
         }
     }
-    
+
 }
 
