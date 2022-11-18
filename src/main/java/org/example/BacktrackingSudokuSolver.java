@@ -57,26 +57,6 @@ public class BacktrackingSudokuSolver implements SudokuSolver {
             board.setFieldValue(0, i, valueToInsert);
         }
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        BacktrackingSudokuSolver that = (BacktrackingSudokuSolver) o;
-        return new EqualsBuilder()
-                .append(NUMBERS_TO_MIX, that.NUMBERS_TO_MIX)
-                .isEquals();
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder(9,9)
-                .append(NUMBERS_TO_MIX)
-                .toHashCode();
-    }
+    
 }
 

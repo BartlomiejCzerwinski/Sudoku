@@ -7,6 +7,7 @@ package org.example;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class SudokuBoxTest {
 
@@ -26,5 +27,35 @@ class SudokuBoxTest {
         sudokuBoard.setFieldValue(0, 0, tmp);
         SudokuBox sudokuBox = sudokuBoard.getBox(0, 0);
         assertEquals(false, sudokuBox.verify());
+    }
+
+    @Test
+    public void testHashCode() {
+        SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
+        sudokuBoard.solveGame();
+        assertEquals(true, sudokuBoard.isBoardValid());
+
+         SudokuBox sudokuBox1 = sudokuBoard.getBox(0, 0);
+         SudokuBox sudokuBox2 = sudokuBoard.getBox(0, 3);
+         SudokuBoard emptySudokuBox = null;
+         SudokuRow sudokuRow = sudokuBoard.getRow(0);
+
+         assertEquals(sudokuBox1.hashCode(), sudokuBox1.hashCode());
+         assertNotEquals(sudokuBox1.hashCode(), sudokuBox2.hashCode());
+         assertEquals(true, sudokuBox1.equals(sudokuBox1));
+         assertEquals(false, sudokuBox1.equals(sudokuBox2));
+         assertEquals(false, sudokuBox1.equals(emptySudokuBox));
+         assertEquals(false, sudokuBox1.equals(sudokuRow));
+    }
+
+    @Test
+    public void toStringTest() {
+        SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
+        sudokuBoard.solveGame();
+        assertEquals(true, sudokuBoard.isBoardValid());
+
+        SudokuBox sudokuBox = sudokuBoard.getBox(0, 0);
+
+        assertEquals(sudokuBox.toString(), sudokuBox.toString());
     }
 }
