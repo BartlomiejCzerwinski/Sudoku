@@ -9,6 +9,8 @@ import static org.example.SudokuBoard.BOARD_SIZE;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class BacktrackingSudokuSolver implements SudokuSolver {
     private static ArrayList<Integer> NUMBERS_TO_MIX =
@@ -56,5 +58,25 @@ public class BacktrackingSudokuSolver implements SudokuSolver {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        BacktrackingSudokuSolver that = (BacktrackingSudokuSolver) o;
+        return new EqualsBuilder()
+                .append(NUMBERS_TO_MIX, that.NUMBERS_TO_MIX)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(9,9)
+                .append(NUMBERS_TO_MIX)
+                .toHashCode();
+    }
 }
 

@@ -7,6 +7,9 @@ package org.example;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class SudokuArea {
     private int size = 9;
@@ -39,6 +42,13 @@ public class SudokuArea {
     }
 
     @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append(sudokuFieldsArray)
+                .toString();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -47,20 +57,17 @@ public class SudokuArea {
             return false;
         }
         SudokuArea that = (SudokuArea) o;
-        return size == that.size && Objects.equals(sudokuFieldsArray, that.sudokuFieldsArray);
+        return new EqualsBuilder()
+                .append(size, that.size)
+                .append(sudokuFieldsArray, that.sudokuFieldsArray)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(size, sudokuFieldsArray);
-    }
-
-    @Override
-    public String toString() {
-        String tmp = "";
-        for (SudokuField sudokuField : sudokuFieldsArray) {
-            tmp += sudokuField.getFieldValue() + " ";
-        }
-        return tmp;
+        return new HashCodeBuilder(9,9)
+                .append(size)
+                .append(sudokuFieldsArray)
+                .toHashCode();
     }
 }

@@ -25,13 +25,6 @@ public class SudokuBoard {
 
     }
 
-    public static void main(String []args) {
-        SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
-        sudokuBoard.solveGame();
-        System.out.println(sudokuBoard.toString());
-    }
-
-
     public SudokuRow getRow(int y) {
         SudokuRow sudokuRow = new SudokuRow();
 
@@ -161,14 +154,15 @@ public class SudokuBoard {
         SudokuBoard that = (SudokuBoard) o;
         return new EqualsBuilder()
                 .append(BOARD_SIZE, that.BOARD_SIZE)
-                .append(board, this.board)
-                .append(sudokuSolver, this.sudokuSolver)
+                .append(board, that.board)
+                .append(sudokuSolver, that.sudokuSolver)
                 .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(9,9).append(BOARD_SIZE)
+        return new HashCodeBuilder(9,9)
+                .append(BOARD_SIZE)
                 .append(board)
                 .append(sudokuSolver)
                 .toHashCode();
