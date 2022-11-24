@@ -4,13 +4,17 @@
 
 package org.example;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import static org.example.SudokuBoard.BOARD_SIZE;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class BacktrackingSudokuSolver implements SudokuSolver {
+public class BacktrackingSudokuSolver implements SudokuSolver, Serializable {
     private static ArrayList<Integer> NUMBERS_TO_MIX =
             new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
 
@@ -54,6 +58,27 @@ public class BacktrackingSudokuSolver implements SudokuSolver {
             int valueToInsert = NUMBERS_TO_MIX.get(i);
             board.setFieldValue(0, i, valueToInsert);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        BacktrackingSudokuSolver that = (BacktrackingSudokuSolver) o;
+        return new EqualsBuilder()
+                .append(NUMBERS_TO_MIX, that.NUMBERS_TO_MIX)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(9,9)
+                .append(NUMBERS_TO_MIX)
+                .toHashCode();
     }
 
 }
