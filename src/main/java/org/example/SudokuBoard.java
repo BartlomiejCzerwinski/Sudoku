@@ -155,7 +155,6 @@ public class SudokuBoard implements Serializable {
         return new EqualsBuilder()
                 .append(BOARD_SIZE, that.BOARD_SIZE)
                 .append(board, that.board)
-                .append(sudokuSolver, that.sudokuSolver)
                 .isEquals();
     }
 
@@ -164,7 +163,6 @@ public class SudokuBoard implements Serializable {
         return new HashCodeBuilder(9,9)
                 .append(BOARD_SIZE)
                 .append(board)
-                .append(sudokuSolver)
                 .toHashCode();
     }
 }

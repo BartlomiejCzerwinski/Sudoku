@@ -4,9 +4,6 @@
 
 package org.example;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 import static org.example.SudokuBoard.BOARD_SIZE;
 
 import java.io.Serializable;
@@ -58,27 +55,6 @@ public class BacktrackingSudokuSolver implements SudokuSolver, Serializable {
             int valueToInsert = NUMBERS_TO_MIX.get(i);
             board.setFieldValue(0, i, valueToInsert);
         }
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        BacktrackingSudokuSolver that = (BacktrackingSudokuSolver) o;
-        return new EqualsBuilder()
-                .append(NUMBERS_TO_MIX, that.NUMBERS_TO_MIX)
-                .isEquals();
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder(9,9)
-                .append(NUMBERS_TO_MIX)
-                .toHashCode();
     }
 
 }
