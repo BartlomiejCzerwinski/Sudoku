@@ -2,8 +2,6 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 
-import java.math.RoundingMode;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class FileSudokuBoardDaoTest {
