@@ -35,4 +35,16 @@ public class SudokuFieldTest {
 
         assertEquals(sudokuField.toString(), sudokuField.toString());
     }
+
+    @Test
+    public void cloneTest() throws CloneNotSupportedException {
+        SudokuField sudokuField = new SudokuField(2);
+        SudokuField sudokuField1 = (SudokuField)sudokuField.clone();
+
+        assertEquals(sudokuField.getFieldValue(), sudokuField1.getFieldValue());
+
+        sudokuField1.setFieldValue(5);
+
+        assertNotEquals(sudokuField.getFieldValue(), sudokuField1.getFieldValue());
+    }
 }
