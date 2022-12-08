@@ -11,7 +11,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class SudokuBoard implements Serializable {
+public class SudokuBoard implements Serializable, Cloneable {
     static int BOARD_SIZE = 9;
     private List<SudokuField> board = Arrays.asList(new SudokuField[81]);
 
@@ -164,5 +164,19 @@ public class SudokuBoard implements Serializable {
                 .append(BOARD_SIZE)
                 .append(board)
                 .toHashCode();
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
+        for(int i = 0; i < 9; i++)
+        {
+            for(int j = 0; j < 9; j++)
+            {
+                int tmp = this.getFieldValue(i, j);
+                sudokuBoard.setFieldValue(i, j, tmp);
+            }
+        }
+        return sudokuBoard;
     }
 }

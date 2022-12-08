@@ -6,8 +6,7 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class SudokuBoardTest {
 
@@ -61,6 +60,15 @@ class SudokuBoardTest {
         sudokuBoard.solveGame();
 
         assertEquals(sudokuBoard.toString(), sudokuBoard.toString());
+    }
+
+    @Test
+    public void sudokuBoardCloneTest() throws CloneNotSupportedException {
+        SudokuBoard sudokuBoard1 = new SudokuBoard(new BacktrackingSudokuSolver());
+        SudokuBoard sudokuBoard2 = (SudokuBoard) sudokuBoard1.clone();
+        assertTrue(sudokuBoard1.equals(sudokuBoard2));
+        sudokuBoard1.solveGame();
+        assertFalse(sudokuBoard1.equals(sudokuBoard2));
     }
 
 }
