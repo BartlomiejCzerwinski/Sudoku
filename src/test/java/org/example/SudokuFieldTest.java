@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SudokuFieldTest {
     @Test
@@ -17,14 +16,14 @@ public class SudokuFieldTest {
         SudokuField sudokuField1 = new SudokuField(sudokuBoard.getFieldValue(0,0));
         SudokuField sudokuField2 = new SudokuField(sudokuBoard.getFieldValue(0,1));
         SudokuField emptySudokuField = null;
-        SudokuColumn sudokuColumn = new SudokuColumn(new ArrayList<SudokuField>(9));
+        SudokuColumn sudokuColumn = null;
 
         assertEquals(sudokuField1.hashCode(), sudokuField1.hashCode());
         assertNotEquals(sudokuField1.hashCode(), sudokuField2.hashCode());
-        assertEquals(true, sudokuField1.equals(sudokuField1));
-        assertEquals(false, sudokuField1.equals(sudokuField2));
-        assertEquals(false, sudokuField1.equals(emptySudokuField));
-        assertEquals(false, sudokuField1.equals(sudokuColumn));
+        assertTrue(sudokuField1.equals(sudokuField1));
+        assertFalse(sudokuField1.equals(sudokuField2));
+        assertFalse(sudokuField1.equals(emptySudokuField));
+        assertFalse(sudokuField1.equals(sudokuColumn));
     }
 
     @Test

@@ -15,7 +15,11 @@ public class SudokuBox extends SudokuArea {
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        List<SudokuField> fields = this.getSudokuFieldsArray();
+        List<SudokuField> fields = new ArrayList<>();
+        for(SudokuField sf : this.getSudokuFieldsArray())
+        {
+            fields.add(new SudokuField(sf.getFieldValue()));
+        }
         return new SudokuBox(fields);
     }
 }

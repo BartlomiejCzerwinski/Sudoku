@@ -4,6 +4,7 @@
 
 package org.example;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SudokuColumn extends SudokuArea {
@@ -14,7 +15,11 @@ public class SudokuColumn extends SudokuArea {
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        List<SudokuField> fields = this.getSudokuFieldsArray();
+        List<SudokuField> fields = new ArrayList<>();
+        for(SudokuField sf : this.getSudokuFieldsArray())
+        {
+            fields.add(new SudokuField(sf.getFieldValue()));
+        }
         return new SudokuColumn(fields);
     }
 }

@@ -63,19 +63,17 @@ class SudokuBoxTest {
         SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
         sudokuBoard.solveGame();
         SudokuBox sudokuBox1 = sudokuBoard.getBox(0, 0);
-        SudokuBox sudokuBox2 = (SudokuBox) sudokuBox1.clone();
-
-        sudokuBox1.setSudokuAreaField(0, 5);
-
-        assertFalse(sudokuBox1.equals(sudokuBox2));
+        SudokuBox sudokuBox2 = (SudokuBox)sudokuBox1.clone();
 
         assertTrue(sudokuBox1.equals(sudokuBox2));
-        sudokuBox1 = sudokuBoard.getBox(8, 8);
+
+        int tmp = sudokuBox1.getSudokuFieldsArray().get(1).getFieldValue();
+        tmp+=1;
+        sudokuBox1.setSudokuAreaField(1, tmp);
+
+        System.out.println(sudokuBox1.toString());
+        System.out.println(sudokuBox2.toString());
         assertFalse(sudokuBox1.equals(sudokuBox2));
-
-        SudokuBox sudokuBox3 = sudokuBoard.getBox(0, 0);
-
-        assertTrue(sudokuBox2.equals(sudokuBox3));
 
 
     }
