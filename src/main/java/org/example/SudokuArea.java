@@ -11,12 +11,12 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class SudokuArea implements Cloneable{
+public class SudokuArea implements Cloneable {
     private int size = 9;
-    private List<SudokuField> sudokuFieldsArray ;
+    private List<SudokuField> sudokuFieldsArray;
 
     public SudokuArea(final List<SudokuField> fields) {
-        if(fields.size() != this.size) {
+        if (fields.size() != this.size) {
             throw new RuntimeException();
         }
         this.sudokuFieldsArray = fields;

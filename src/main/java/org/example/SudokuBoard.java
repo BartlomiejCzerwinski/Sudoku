@@ -164,10 +164,8 @@ public class SudokuBoard implements Serializable, Cloneable {
     @Override
     protected Object clone() throws CloneNotSupportedException {
         SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
-        for(int i = 0; i < 9; i++)
-        {
-            for(int j = 0; j < 9; j++)
-            {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
                 int tmp = this.getFieldValue(i, j);
                 sudokuBoard.setFieldValue(i, j, tmp);
             }

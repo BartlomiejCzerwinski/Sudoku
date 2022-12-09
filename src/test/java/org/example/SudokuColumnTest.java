@@ -60,8 +60,8 @@ class SudokuColumnTest {
     public void cloneTest() throws CloneNotSupportedException {
         SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
         sudokuBoard.solveGame();
-        SudokuBox sudokuColumn1 = sudokuBoard.getBox(0, 0);
-        SudokuBox sudokuColumn2 = (SudokuBox)sudokuColumn1.clone();
+        SudokuColumn sudokuColumn1 = sudokuBoard.getColumn(0);
+        SudokuColumn sudokuColumn2 = (SudokuColumn)sudokuColumn1.clone();
 
         assertTrue(sudokuColumn1.equals(sudokuColumn2));
 

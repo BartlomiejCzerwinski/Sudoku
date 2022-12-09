@@ -60,8 +60,8 @@ class SudokuRowTest {
     public void cloneTest() throws CloneNotSupportedException {
         SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
         sudokuBoard.solveGame();
-        SudokuBox sudokuRow1 = sudokuBoard.getBox(0, 0);
-        SudokuBox sudokuRow2 = (SudokuBox)sudokuRow1.clone();
+        SudokuRow sudokuRow1 = sudokuBoard.getRow(0);
+        SudokuRow sudokuRow2 = (SudokuRow)sudokuRow1.clone();
 
         assertTrue(sudokuRow1.equals(sudokuRow2));
 

@@ -16,8 +16,7 @@ public class SudokuColumn extends SudokuArea {
     @Override
     protected Object clone() throws CloneNotSupportedException {
         List<SudokuField> fields = new ArrayList<>();
-        for(SudokuField sf : this.getSudokuFieldsArray())
-        {
+        for (SudokuField sf : this.getSudokuFieldsArray()) {
             fields.add(new SudokuField(sf.getFieldValue()));
         }
         return new SudokuColumn(fields);
