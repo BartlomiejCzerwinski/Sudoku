@@ -60,5 +60,13 @@ public class SudokuFieldTest {
 
         assertEquals(1, sudokuField1.compareTo(sudokuField2));
         assertEquals(-1, sudokuField2.compareTo(sudokuField1));
+
+        SudokuField nullSudokuField = null;
+
+        Exception exception = assertThrows(NullPointerException.class, () -> {
+            sudokuField1.compareTo(nullSudokuField);
+        });
+
+        assertEquals(NullPointerException.class, exception.getClass());
     }
 }
