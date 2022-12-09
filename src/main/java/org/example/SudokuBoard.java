@@ -5,6 +5,7 @@
 package org.example;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -26,39 +27,33 @@ public class SudokuBoard implements Serializable, Cloneable {
     }
 
     public SudokuRow getRow(int y) {
-        SudokuRow sudokuRow = new SudokuRow();
-
+        List<SudokuField> fields = new ArrayList<>(9);
         for (int columnIndex = 0; columnIndex < BOARD_SIZE; columnIndex++) {
-            sudokuRow.setSudokuAreaField(columnIndex,
-                    getFieldValue(y, columnIndex));
+            fields.add(new SudokuField(getFieldValue(y, columnIndex)));
         }
-        return sudokuRow;
+        return new SudokuRow(fields);
     }
 
     public SudokuColumn getColumn(int x) {
-        SudokuColumn sudokuColumn = new SudokuColumn();
-
+        List<SudokuField> fields = new ArrayList<>(9);
         for (int rowIndex = 0; rowIndex < BOARD_SIZE; rowIndex++) {
-            sudokuColumn.setSudokuAreaField(rowIndex,
-                    getFieldValue(rowIndex, x));
+            fields.add(new SudokuField(getFieldValue(rowIndex, x)));
         }
-        return sudokuColumn;
+        return new SudokuColumn(fields);
     }
 
     public SudokuBox getBox(int x, int y) {
-        SudokuBox sudokuBox = new SudokuBox();
+        List<SudokuField> fields = new ArrayList<>(9);
         int localBoxRowIndex = x - (x % 3);
         int localBoxColumnIndex = y - (y % 3);
 
         for (int row = localBoxRowIndex, i = 0; row < localBoxRowIndex + 3; row++, i++) {
             for (int column = localBoxColumnIndex, j = 0;
                  column < localBoxColumnIndex + 3; column++, j++) {
-                int placeToInsertValue = 3 * i + j;
-                sudokuBox.setSudokuAreaField(placeToInsertValue,
-                        getFieldValue(row, column));
+                fields.add(new SudokuField(getFieldValue(row, column)));
             }
         }
-        return sudokuBox;
+        return new SudokuBox(fields);
     }
 
     public void solveGame() {

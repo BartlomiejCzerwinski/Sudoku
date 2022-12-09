@@ -5,19 +5,25 @@
 package org.example;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class SudokuArea {
+public class SudokuArea implements Cloneable{
     private int size = 9;
-    private List<SudokuField> sudokuFieldsArray = Arrays.asList(new SudokuField[9]);
+    private List<SudokuField> sudokuFieldsArray ;
 
-    public SudokuArea() {
-        for (int i = 0; i < 9; i++) {
-            this.sudokuFieldsArray.set(i, new SudokuField(0));
+    public SudokuArea(final List<SudokuField> fields) {
+        if(fields.size() != this.size) {
+            throw new RuntimeException();
         }
+        this.sudokuFieldsArray = fields;
+    }
+
+    public List<SudokuField> getSudokuFieldsArray() {
+        return Collections.unmodifiableList(sudokuFieldsArray);
     }
 
     public boolean verify() {
@@ -69,4 +75,6 @@ public class SudokuArea {
                 .append(sudokuFieldsArray)
                 .toHashCode();
     }
+
+
 }

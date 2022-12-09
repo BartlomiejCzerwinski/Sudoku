@@ -6,8 +6,7 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class SudokuBoxTest {
 
@@ -57,5 +56,27 @@ class SudokuBoxTest {
         SudokuBox sudokuBox = sudokuBoard.getBox(0, 0);
 
         assertEquals(sudokuBox.toString(), sudokuBox.toString());
+    }
+
+    @Test//zrobic deep copy dla sudoku Areas!!!!!!!!!
+    public void cloneTest() throws CloneNotSupportedException {
+        SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
+        sudokuBoard.solveGame();
+        SudokuBox sudokuBox1 = sudokuBoard.getBox(0, 0);
+        SudokuBox sudokuBox2 = (SudokuBox) sudokuBox1.clone();
+
+        sudokuBox1.setSudokuAreaField(0, 5);
+
+        assertFalse(sudokuBox1.equals(sudokuBox2));
+
+        assertTrue(sudokuBox1.equals(sudokuBox2));
+        sudokuBox1 = sudokuBoard.getBox(8, 8);
+        assertFalse(sudokuBox1.equals(sudokuBox2));
+
+        SudokuBox sudokuBox3 = sudokuBoard.getBox(0, 0);
+
+        assertTrue(sudokuBox2.equals(sudokuBox3));
+
+
     }
 }
