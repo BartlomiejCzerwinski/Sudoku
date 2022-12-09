@@ -15,9 +15,7 @@ public class SudokuBox extends SudokuArea {
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        List<SudokuField> tmpList = this.getSudokuFieldsArray();
-        SudokuBox sudokuBox = new SudokuBox(new ArrayList<SudokuField>(9));
-
-        return super.clone();
+        List<SudokuField> fields = this.getSudokuFieldsArray();
+        return new SudokuBox(fields);
     }
 }
