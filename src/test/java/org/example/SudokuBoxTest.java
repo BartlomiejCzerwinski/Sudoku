@@ -58,7 +58,7 @@ class SudokuBoxTest {
         assertEquals(sudokuBox.toString(), sudokuBox.toString());
     }
 
-    @Test//zrobic deep copy dla sudoku Areas!!!!!!!!!
+    @Test
     public void cloneTest() throws CloneNotSupportedException {
         SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
         sudokuBoard.solveGame();
@@ -71,10 +71,7 @@ class SudokuBoxTest {
         tmp+=1;
         sudokuBox1.setSudokuAreaField(1, tmp);
 
-        System.out.println(sudokuBox1.toString());
-        System.out.println(sudokuBox2.toString());
         assertFalse(sudokuBox1.equals(sudokuBox2));
-
 
     }
 }
