@@ -48,4 +48,17 @@ public class SudokuFieldTest {
 
         assertNotEquals(sudokuField.getFieldValue(), sudokuField1.getFieldValue());
     }
+
+    @Test
+    public  void compareToTest() {
+        SudokuField sudokuField1 = new SudokuField(1);
+        SudokuField sudokuField2 = new SudokuField(1);
+
+        assertEquals(0, sudokuField1.compareTo(sudokuField2));
+
+        sudokuField1.setFieldValue(5);
+
+        assertEquals(1, sudokuField1.compareTo(sudokuField2));
+        assertEquals(-1, sudokuField2.compareTo(sudokuField1));
+    }
 }

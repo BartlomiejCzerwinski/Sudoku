@@ -9,7 +9,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class SudokuField implements Serializable, Cloneable {
+public class SudokuField implements Serializable, Cloneable, Comparable<SudokuField> {
     private int value = 0;
 
     public SudokuField(int value) {
@@ -53,5 +53,16 @@ public class SudokuField implements Serializable, Cloneable {
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
+    }
+
+    @Override
+    public int compareTo(SudokuField o) {
+        if(this.getFieldValue() == o.getFieldValue()) {
+            return 0;
+        } else if (this.getFieldValue() > o.getFieldValue()) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
 }
