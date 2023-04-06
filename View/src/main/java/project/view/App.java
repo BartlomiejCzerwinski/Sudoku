@@ -17,7 +17,6 @@ public class App extends Application {
 
     private static Scene scene;
     private static Stage stage;
-
     static Locale location = new Locale("en");
 
     static void setStart(Locale location) throws IOException {

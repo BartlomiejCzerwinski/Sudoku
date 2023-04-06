@@ -213,19 +213,4 @@
         </plugins>
     </build>
 
-
-    <developers>
-        <developer>
-            <id>242354</id>
-            <name>Oskar Baranowski</name>
-            <email>242354@edu.p.lodz.pl</email>
-        </developer>
-        <developer>
-            <id>242372</id>
-            <name>Bartłomiej Czerwiński</name>
-            <email>242372@edu.p.lodz.pl</email>
-        </developer>
-    </developers>
-
-    <description>Projekt grupy laboratoryjnej an_pn_1345_01</description>
 </project>

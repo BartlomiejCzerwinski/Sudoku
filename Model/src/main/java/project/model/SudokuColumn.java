@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SudokuColumn extends SudokuArea {
-
     public SudokuColumn(List<SudokuField> fields) {
         super(fields);
     }

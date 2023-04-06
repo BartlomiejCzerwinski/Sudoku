@@ -17,11 +17,9 @@ public class FileSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
     ObjectOutputStream objectOutputStream;
     FileInputStream fis;
     FileOutputStream fos;
-
     ResourceBundle bundle = ResourceBundle.getBundle("bundles.messages");
 
     Locale locale = new Locale("en");
-
     Logger logger = LoggerFactory.getLogger(FileSudokuBoardDao.class);
 
     public FileSudokuBoardDao(String filename) {
@@ -56,7 +54,6 @@ public class FileSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
             throw new FileSudokuBoardDaoException(bundle.getString("WriteMessage") + e);
         }
     }
-
 
     @Override
     public void close() throws Exception {

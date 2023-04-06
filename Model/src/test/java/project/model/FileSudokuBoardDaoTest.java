@@ -1,6 +1,5 @@
 package project.model;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import project.model.exceptions.DatabaseException;
 import project.model.exceptions.FileSudokuBoardDaoException;
@@ -28,7 +27,6 @@ class FileSudokuBoardDaoTest {
     public void readExceptionTest(){
         SudokuBoardDaoFactory factory = new SudokuBoardDaoFactory();
         Dao<SudokuBoard> fileSudokuBoardDao;
-        Dao<SudokuField> fileSudokuFieldDao;
 
         fileSudokuBoardDao = factory.getFileSudokuBoardDao("test.txt");
 
@@ -52,6 +50,5 @@ class FileSudokuBoardDaoTest {
 
 
     }
-
 
 }

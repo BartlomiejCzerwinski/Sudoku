@@ -69,6 +69,5 @@ class SudokuRowTest {
         sudokuRow1.setSudokuAreaField(1, tmp);
 
         assertFalse(sudokuRow1.equals(sudokuRow2));
-
     }
 }

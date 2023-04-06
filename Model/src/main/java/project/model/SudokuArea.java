@@ -18,7 +18,6 @@ public class SudokuArea implements Cloneable {
     ResourceBundle bundle = ResourceBundle.getBundle("bundles.messages");
 
     Locale locale = new Locale("en");
-
     Logger logger = LoggerFactory.getLogger(SudokuArea.class);
 
     public SudokuArea(final List<SudokuField> fields) {

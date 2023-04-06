@@ -28,256 +28,173 @@ public class SecondaryController {
 
     @FXML
     private GridPane gridPane;
-
     @FXML
     private Button saveButton;
-
     @FXML
     private Button backButton;
-
     @FXML
     private TextField saveField;
 
     @FXML
     private TextField tf00;
-
     @FXML
     private TextField tf01;
-
     @FXML
     private TextField tf02;
-
     @FXML
     private TextField tf03;
-
     @FXML
     private TextField tf04;
-
     @FXML
     private TextField tf05;
-
     @FXML
     private TextField tf06;
-
     @FXML
     private TextField tf07;
-
     @FXML
     private TextField tf08;
-
     @FXML
     private TextField tf10;
-
     @FXML
     private TextField tf11;
-
     @FXML
     private TextField tf12;
-
     @FXML
     private TextField tf13;
-
     @FXML
     private TextField tf14;
-
     @FXML
     private TextField tf15;
-
     @FXML
     private TextField tf16;
-
     @FXML
     private TextField tf17;
-
     @FXML
     private TextField tf18;
-
     @FXML
     private TextField tf20;
-
     @FXML
     private TextField tf21;
-
     @FXML
     private TextField tf22;
-
     @FXML
     private TextField tf23;
-
     @FXML
     private TextField tf24;
-
     @FXML
     private TextField tf25;
-
     @FXML
     private TextField tf26;
-
     @FXML
     private TextField tf27;
-
     @FXML
     private TextField tf28;
-
     @FXML
     private TextField tf30;
-
     @FXML
     private TextField tf31;
-
     @FXML
     private TextField tf32;
-
     @FXML
     private TextField tf33;
-
     @FXML
     private TextField tf34;
-
     @FXML
     private TextField tf35;
-
     @FXML
     private TextField tf36;
-
     @FXML
     private TextField tf37;
-
     @FXML
     private TextField tf38;
-
     @FXML
     private TextField tf40;
-
     @FXML
     private TextField tf41;
-
     @FXML
     private TextField tf42;
-
     @FXML
     private TextField tf43;
-
     @FXML
     private TextField tf44;
-
     @FXML
     private TextField tf45;
-
     @FXML
     private TextField tf46;
-
     @FXML
     private TextField tf47;
-
     @FXML
     private TextField tf48;
-
     @FXML
     private TextField tf50;
-
     @FXML
     private TextField tf51;
-
     @FXML
     private TextField tf52;
-
     @FXML
     private TextField tf53;
-
     @FXML
     private TextField tf54;
-
     @FXML
     private TextField tf55;
-
     @FXML
     private TextField tf56;
-
     @FXML
     private TextField tf57;
-
     @FXML
     private TextField tf58;
-
     @FXML
     private TextField tf60;
-
     @FXML
     private TextField tf61;
-
     @FXML
     private TextField tf62;
-
     @FXML
     private TextField tf63;
-
     @FXML
     private TextField tf64;
-
     @FXML
     private TextField tf65;
-
     @FXML
     private TextField tf66;
-
     @FXML
     private TextField tf67;
-
     @FXML
     private TextField tf68;
-
     @FXML
     private TextField tf70;
-
     @FXML
     private TextField tf71;
-
     @FXML
     private TextField tf72;
-
     @FXML
     private TextField tf73;
-
     @FXML
     private TextField tf74;
-
     @FXML
     private TextField tf75;
-
     @FXML
     private TextField tf76;
-
     @FXML
     private TextField tf77;
-
     @FXML
     private TextField tf78;
-
     @FXML
     private TextField tf80;
-
     @FXML
     private TextField tf81;
-
     @FXML
     private TextField tf82;
-
     @FXML
     private TextField tf83;
-
     @FXML
     private TextField tf84;
-
     @FXML
     private TextField tf85;
-
     @FXML
     private TextField tf86;
-
     @FXML
     private TextField tf87;
-
     @FXML
     private TextField tf88;
 

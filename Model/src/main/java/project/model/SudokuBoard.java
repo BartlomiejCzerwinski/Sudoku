@@ -72,7 +72,6 @@ public class SudokuBoard implements Serializable, Cloneable {
         } else {
             return false;
         }
-
     }
 
     private boolean isRowValid(int rowIndex, int columnIndex, int numberToInsert) {

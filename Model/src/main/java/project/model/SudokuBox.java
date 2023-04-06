@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SudokuBox extends SudokuArea {
-
     public SudokuBox(List<SudokuField> fields) {
         super(fields);
     }

@@ -19,7 +19,6 @@ public class SudokuField implements Serializable, Cloneable, Comparable<SudokuFi
 
 
     Locale locale = new Locale("en");
-
     Logger logger = LoggerFactory.getLogger(SudokuField.class);
 
     public SudokuField(int value) {

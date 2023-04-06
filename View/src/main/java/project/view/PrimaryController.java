@@ -24,22 +24,12 @@ public class PrimaryController {
 
     @FXML
     private RadioButton button1;
-
     @FXML
     private RadioButton button2;
-
     @FXML
     private RadioButton button3;
-
-    @FXML
-    private Button loadButton;
-
-    @FXML
-    private Button langButton;
-
     @FXML
     private TextField loadField;
-
     static Logger logger = LoggerFactory.getLogger(PrimaryController.class);
 
     DifficultyLevel difficultyLevel = null;
